@@ -1,5 +1,7 @@
+import os
 from fastapi import FastAPI
 from datetime import datetime
+import uvicorn
 
 app = FastAPI(title="Doctor Availability API")
 
@@ -16,4 +18,9 @@ def get_available_doctor():
         return {"doctor_name": "damon"}
     else:  # Even hour
         return {"doctor_name": "cathrin"}
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
 
