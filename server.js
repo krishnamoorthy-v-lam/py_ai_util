@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 
 const cors = require("cors");
+
 app.use(cors());
+app.use(express.json());
 
 app.use((req, res, next) => {
   console.log(req.method, "  ", req.url);
@@ -14,24 +16,26 @@ app.post("/get_available_doctor", (req, res) => {
    * Get available doctor based on current time.
    * Returns 'damon' if Date.now() is odd, otherwise returns 'cathrin'.
    */
+  const { toolCallId } = req.body || {};
+  console.log("tool: ", toolCallId)
   const currentTime = Date.now();
 
   if (currentTime % 2 === 1) {
     // Odd number
-    res.json({
+    res.status(200).json({
       results: [
         {
-          toolCallId: "ae384ae8-dff2-4a34-aa9e-a8a404fa2b22",
+          toolCallId,
           result: "Dr. Damon is available",
         },
       ],
     });
   } else {
     // Even number
-    res.json({
+    res.status(200).json({
       results: [
         {
-          toolCallId: "ae384ae8-dff2-4a34-aa9e-a8a404fa2b22",
+          toolCallId,
           result: "Dr. Cathrin is available",
         },
       ],
