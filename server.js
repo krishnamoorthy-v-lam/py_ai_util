@@ -6,7 +6,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/get_available_doctor", (req, res) => {
+app.post("/get_available_doctor", (req, res) => {
   /**
    * Get available doctor based on current time.
    * Returns 'damon' if Date.now() is odd, otherwise returns 'cathrin'.
