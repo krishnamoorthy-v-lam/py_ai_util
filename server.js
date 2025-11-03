@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
 
+app.use((req, res, next) => {
+  console.log(req.method, "  ", req.url);
+  next();
+});
+
 app.get("/get_available_doctor", (req, res) => {
   /**
    * Get available doctor based on current time.
