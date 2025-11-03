@@ -18,10 +18,17 @@ app.post("/get_available_doctor", (req, res) => {
 
   if (currentTime % 2 === 1) {
     // Odd number
-    res.json({ result: "Dr. Damon is available" });
+    res.json({
+      results: [
+        {
+          toolCallId: "ae384ae8-dff2-4a34-aa9e-a8a404fa2b22",
+          result: "Dr. Damon is available",
+        },
+      ],
+    });
   } else {
     // Even number
-    res.json({ result: "Dr. Cathrin is available" });
+    res.json({ toolCallId: "ae384ae8-dff2-4a34-aa9e-a8a404fa2b22", result: "Dr. Cathrin is available" });
   }
 });
 
