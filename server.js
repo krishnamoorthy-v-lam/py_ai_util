@@ -28,7 +28,14 @@ app.post("/get_available_doctor", (req, res) => {
     });
   } else {
     // Even number
-    res.json({ toolCallId: "ae384ae8-dff2-4a34-aa9e-a8a404fa2b22", result: "Dr. Cathrin is available" });
+    res.json({
+      results: [
+        {
+          toolCallId: "ae384ae8-dff2-4a34-aa9e-a8a404fa2b22",
+          result: "Dr. Cathrin is available",
+        },
+      ],
+    });
   }
 });
 
